@@ -1,0 +1,83 @@
+.advanced-form {
+  width: 350px;
+  margin: auto;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #fdfdfd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+.advanced-form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #999;
+  border-radius: 6px;
+}
+
+.password-tools {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+}
+
+.strength {
+  text-transform: capitalize;
+}
+
+.strength.weak {
+  color: red;
+}
+
+.strength.medium {
+  color: orange;
+}
+
+.strength.strong {
+  color: green;
+}
+
+.error {
+  color: red;
+  font-size: 0.85em;
+}
+
+.success {
+  color: green;
+  text-align: center;
+  margin-top: 15px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #5c67f2;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
