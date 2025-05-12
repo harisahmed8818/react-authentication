@@ -1,20 +1,22 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/forms/LoginForm";
 
-const Login = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+const Login = ({ onLogin }) => {
+  const navigate = useNavigate();
 
   const handleLogin = (userData) => {
-    // Save login info in localStorage or context
-    localStorage.setItem("isAuthenticated", "true");
+    onLogin();
     localStorage.setItem("user", JSON.stringify(userData));
-
-    // Navigate to the dashboard page
+    localStorage.setItem("isAuthenticated", "true");
     navigate("/dashboard");
   };
-
-  return <LoginForm onLogin={handleLogin} />;
+  return (
+    <div className="login-page">
+      <h2>Login</h2>
+      <LoginForm onLogin={handleLogin} />
+    </div>
+  );
 };
 
 export default Login;

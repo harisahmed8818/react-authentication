@@ -8,14 +8,18 @@ import {
 import Navbar from "./components/common/Navbar";
 import LoginForm from "./components/forms/LoginForm";
 import SignupForm from "./components/forms/SignupForm";
-import Dashboard from "./pages/Dashboard"; // Your dashboard page component
-import Home from "./pages/Home"; // Your home page component
+import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("isAuthenticated") === "true"
+  );
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    localStorage.setItem("isAuthenticated", "false");
+    localStorage.removeItem("user");
   };
 
   const handleLogin = () => {

@@ -1,4 +1,8 @@
-export const isRequired = (value) => value && value.trim() !== "";
+import { getPasswordStrength } from "./passwordStrength";
+
+export const isRequired = (value) => {
+  return value && value.trim() !== "";
+};
 
 export const isValidEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -6,5 +10,6 @@ export const isValidEmail = (email) => {
 };
 
 export const isValidPassword = (password) => {
-  return password && password.length >= 6;
+  const strength = getPasswordStrength(password);
+  return strength === "Medium" || strength === "Strong";
 };

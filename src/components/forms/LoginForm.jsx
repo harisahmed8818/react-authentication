@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Form.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState("");
@@ -7,6 +7,7 @@ const LoginForm = ({ onLogin }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const validate = () => {
     const newErrors = {};
@@ -23,15 +24,16 @@ const LoginForm = ({ onLogin }) => {
     if (Object.keys(newErrors).length === 0) {
       setIsSubmitting(true);
 
-      // Simulate authentication
       const storedUser = JSON.parse(localStorage.getItem("user"));
+
       if (
         storedUser &&
         storedUser.email === email &&
         storedUser.password === password
       ) {
-        onLogin(storedUser); // Successful login
+        onLogin(storedUser);
         setMessage("Login successful!");
+        navigate("/dashboard");
       } else {
         setMessage("Invalid email or password");
       }
@@ -51,34 +53,37 @@ const LoginForm = ({ onLogin }) => {
   }, [errors, message]);
 
   return (
-    <form onSubmit={handleSubmit} className="form-container">
-      <h2>Login</h2>
-      {message && <p className="form-message">{message}</p>}
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <h2>Login</h2>
 
-      <div className="form-group">
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        {errors.email && <span className="error">{errors.email}</span>}
-      </div>
+        {message && <p className="form-message">{message}</p>}
 
-      <div className="form-group">
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {errors.password && <span className="error">{errors.password}</span>}
-      </div>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {errors.email && <span className="error">{errors.email}</span>}
+        </div>
 
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Logging in..." : "Login"}
-      </button>
-    </form>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {errors.password && <span className="error">{errors.password}</span>}
+        </div>
+
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Logging in..." : "Login"}
+        </button>
+      </form>
+    </div>
   );
 };
 

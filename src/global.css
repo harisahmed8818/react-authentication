@@ -1,134 +1,200 @@
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 0 20px;
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(45deg, #370101, #b88e02);
+
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+}
+
+h1,
+h2,
+p {
+  font-family: "Montserrat", sans-serif;
 }
 
 .navbar {
-  background-color: #333;
-  padding: 10px 0;
-}
-
-.nav-container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #1d0101, #b88e02);
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
 }
 
-.nav-logo {
-  color: #fff;
-  text-decoration: none;
-  font-size: 24px;
-  font-weight: bold;
+.navbar .nav-toggle {
+  display: none;
+}
+
+.navbar .nav-toggle-label {
+  display: none;
 }
 
 .nav-links {
-  list-style: none;
   display: flex;
-  margin: 0;
-  padding: 0;
+  gap: 20px;
 }
 
-.nav-links li {
-  margin-left: 20px;
-}
-
-.nav-links a {
-  color: #fff;
+.nav-links a,
+.nav-links button {
+  color: #f39c12;
   text-decoration: none;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
 }
 
-.nav-button {
-  background: none;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
+.nav-links a:hover,
+.nav-links button:hover {
+  background-color: #f39c12;
+  color: #1e1e1e;
 }
 
 .form-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  background-color: #282828;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .form-container h2 {
-  margin-top: 0;
+  font-size: 24px;
+  color: #f39c12;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.form-container form {
-  display: flex;
-  flex-direction: column;
+.form-container .form-group {
+  margin-bottom: 20px;
 }
 
 .form-container label {
-  margin: 10px 0 5px;
+  font-size: 16px;
+  color: #ccc;
 }
 
 .form-container input {
-  padding: 8px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  background-color: #444;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
   font-size: 16px;
 }
 
-.form-container .error {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
+.form-container input:focus {
+  border: 2px solid #f39c12;
 }
 
 .form-container button {
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  background-color: #f39c12;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #1e1e1e;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
 }
 
-.password-strength {
+.form-container button:hover {
+  background-color: #d87a00;
+}
+
+.form-message {
+  color: #ff4747;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.error {
+  color: #ff4747;
+  font-size: 12px;
   margin-top: 5px;
-  font-weight: bold;
+  display: block;
 }
 
-.password-strength.weak {
-  color: red;
+.home {
+  text-align: center;
+  padding: 50px 20px;
+  max-width: 800px;
 }
 
-.password-strength.medium {
-  color: orange;
+.home h1 {
+  font-size: 36px;
+  color: #f39c12;
+  margin-bottom: 20px;
 }
 
-.password-strength.strong {
-  color: green;
+.home p {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.6;
 }
 
-.general-error {
-  color: red;
-  margin-bottom: 10px;
+.dashboard {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #333;
+  color: #fff;
 }
 
-@media (max-width: 600px) {
-  .container {
-    width: 100%;
-    margin: 20px;
-    padding: 0 10px;
-  }
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-  }
-  .nav-links li {
-    margin: 10px 0;
-  }
+.dashboard h1 {
+  font-size: 36px;
+  color: #f39c12;
+}
+
+.dashboard p {
+  font-size: 18px;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f39c12;
+  text-decoration: underline;
+}
+
+.strength {
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+  font-weight: 500;
+}
+
+.strength-weak {
+  color: #ff3e3e;
+}
+
+.strength-medium {
+  color: #ffa500;
+}
+
+.strength-strong {
+  color: #00e676;
 }
